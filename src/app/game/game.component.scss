@@ -29,6 +29,12 @@ section {
     }
 }
 
+.played-card {
+    right: 12px;
+    bottom: 12px;
+    transform: scale(1) translateX(500px) translateY(400px) rotate(10deg);
+}
+
 .pick-card {
     animation: pick-card-animation 1s ease-in-out;
     transform: scale(1) translateX(500px) translateY(400px) rotate(10deg);
@@ -50,4 +56,9 @@ section {
     100% {
         transform: scale(1) translateX(500px) translateY(400px) rotate(10deg);
     }
+}
+
+app-player {
+    position: absolute;
+    right: 16px;
 }
