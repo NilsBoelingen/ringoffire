@@ -8,11 +8,17 @@ main {
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
     box-shadow: 0px 0px 16px 1px #000000;
+
     img {
         width: 64px;
     }
-    span{
+
+    span {
         font-size: 28px;
         color: white;
     }
+}
+
+.player-active {
+    background-color: rgba(167, 0, 0, 0.5);
 }

@@ -9,6 +9,7 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
 import { FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { GameInfoComponent } from '../game-info/game-info.component';
 
 @Component({
   selector: 'app-game',
@@ -23,7 +24,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FormsModule, 
     MatInputModule, 
     MatFormFieldModule, 
-    DialogAddPlayerComponent
+    DialogAddPlayerComponent,
+    GameInfoComponent
   ],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
