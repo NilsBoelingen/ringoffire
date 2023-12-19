@@ -6,16 +6,16 @@
     <section>
         <img *ngFor="let c of [0, 1, 2, 3]; let i = index"
             [ngStyle]="{'right.px': i * 3, 'bottom.px': i*3}"
-            src="/assets/img/cards/green_back.png">
+            src="assets/img/cards/green_back.png">
         <img (click)="pickCard()" class="top-card"
             style="right: 12px; bottom: 12px;"
-            src="/assets/img/cards/green_back.png">
+            src="assets/img/cards/green_back.png">
         <img *ngFor="let card of game.playedCards; let i = index"
             [ngStyle]="{'right.px': 12 + i, 'bottom.px': 12 + i}"
-            class="played-card" src="/assets/img/cards/{{ card }}.png">
+            class="played-card" src="assets/img/cards/{{ card }}.png">
         <img (click)="pickCard()" *ngIf="pickCardAnimation" class="pick-card"
             style="right: 12px; bottom: 12px;"
-            src="/assets/img/cards/{{ currentCard }}.png">
+            src="assets/img/cards/{{ currentCard }}.png">
     </section>
 </main>
 
