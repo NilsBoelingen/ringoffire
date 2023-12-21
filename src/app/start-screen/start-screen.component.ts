@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { Router} from '@angular/router';
+import { Component, OnInit, Inject, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Firestore, collection, collectionData, doc, getDoc, addDoc, updateDoc, setDoc } from '@angular/fire/firestore';
+import { Game } from '../../models/game';
 
 @Component({
   selector: 'app-start-screen',
@@ -10,10 +12,18 @@ import { CommonModule } from '@angular/common';
   styleUrl: './start-screen.component.scss'
 })
 export class StartScreenComponent {
+  private firestore: Firestore = inject(Firestore);
+  game: Game;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.game = new Game();
+  }
 
-  newGame() {
-    this.router.navigate(['/game']);
+  async newGame() {
+    let game = new Game();
+    await addDoc(collection(this.firestore, "Games"), { 'newGame': this.game.toJson() }).then((docRef) => {
+      console.log("Document written with ID: ", docRef.id);
+      this.router.navigate(['/game/' + docRef.id]);
+    });
   }
 }
