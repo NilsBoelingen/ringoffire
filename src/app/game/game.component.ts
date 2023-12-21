@@ -36,8 +36,7 @@ import { Observable } from 'rxjs';
 })
 export class GameComponent implements OnInit {
   private firestore: Firestore = inject(Firestore);
-  pickCardAnimation = false;
-  currentCard: string = '';
+
   game: Game;
   games: any[] = [];
 
@@ -49,6 +48,8 @@ export class GameComponent implements OnInit {
         this.game.players = doc.data()?.['newGame'].players;
         this.game.stack = doc.data()?.['newGame'].stack;
         this.game.playedCards = doc.data()?.['newGame'].playedCards;
+        this.game.pickCardAnimation = doc.data()?.['newGame'].pickCardAnimation;
+        this.game.currentCard = doc.data()?.['newGame'].currentCard;
       });
     });
   }
@@ -62,15 +63,15 @@ export class GameComponent implements OnInit {
   }
 
   pickCard() {
-    if (!this.pickCardAnimation) {
-      this.currentCard = this.game.stack.pop()!;
-      this.pickCardAnimation = true;
+    if (!this.game.pickCardAnimation) {
+      this.game.currentCard = this.game.stack.pop()!;
+      this.game.pickCardAnimation = true;
       this.game.currentPlayer++;
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
       this.saveGame();
       setTimeout(() => {
-        this.game.playedCards.push(this.currentCard);
-        this.pickCardAnimation = false;
+        this.game.playedCards.push(this.game.currentCard);
+        this.game.pickCardAnimation = false;
         this.saveGame();
       }, 1000);
     }

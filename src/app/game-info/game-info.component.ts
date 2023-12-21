@@ -35,7 +35,7 @@ export class GameInfoComponent {
   @Input() card: string;
 
   constructor(public game: GameComponent) {
-    this.card = this.game.currentCard;
+    this.card = this.game.game.currentCard;
   }
 
   ngOnChanges() {
